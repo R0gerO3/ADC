@@ -101,14 +101,9 @@ int main(void) {
     GPIOD->DEN |= 0x08; // set pin 3-0 as digital 
 
     // Conversion results
-    int potent_dig;
-    int photosensor_dig;
     int temperature_dig;
     double analog_reading;
-    bool buttonState = false;
-    bool lastButtonState = false;
-    bool format = false;
-    int sensorIndex = 0;
+    
 
     char reading_str[9] = {' '}; // storage location for analog readings
  // Initial display setup
@@ -121,125 +116,7 @@ int main(void) {
         temperature_dig = ADC0->SSFIFO0; // temperature sensor
         ADC0->ISC = 1; // clear interrupt flag
         buttonState = (GPIOD->DATA & 0x08) >> 3;
-
+    }
+}
 			
-			//Temperature sensor F and C
-			
-//			
-//        if (buttonState != lastButtonState) {
-//            if (buttonState == 1) {
-//                sensorIndex++;
-//                sensorIndex %= 3;
-//                format = !format; // F->C
-//                delayMs(50);
-//            }
-//        }
-
-        // Switch statement for displaying temperature in the correct format
-//        analog_reading = (temperature_dig * 3.3) / 4095;
-//        analog_reading = analog_reading * 100;
-//        if (format) { // Fahrenheit
-//            analog_reading = (analog_reading * 9.0 / 5.0) + 32.0;
-//        }
-//        sprintf(reading_str, "%.6f", analog_reading);
-//        LCD_command(1); // clear display of LCD
-//        LCD_data('T');
-//        LCD_data('E');
-//        LCD_data('M');
-//        LCD_data('P');
-//        LCD_data('E');
-//        LCD_data('R');
-//        LCD_data('A');
-//        LCD_data('T');
-//        LCD_data('U');
-//        LCD_data('R');
-//        LCD_data('E');
-//        LCD_command(0xC0); // next line
-//        for (unsigned int i = 0; i < sizeof(reading_str) / sizeof(reading_str[0]); i++) {
-//            LCD_data(reading_str[i]);
-//        }
-//        if (format) {
-//            LCD_data('F');
-//        } else {
-//            LCD_data('C');
-//        }
-//        delayMs(100);
-//			}
-//		}
-//			
-    
-
-
-
-
-
-
-
-
-//Potentiometer
-
-
-//   LCD_command(1); // clear display of LCD
-//    LCD_data('P');
-//    LCD_data('O');
-//    LCD_data('T');
-//    LCD_data('E');
-//    LCD_data('N');
-//    LCD_data('T');
-//    LCD_data('I');
-//    LCD_data('O');
-//    LCD_data('M');
-//    LCD_data('E');
-//    LCD_data('T');
-//    LCD_data('E');
-//    LCD_data('R');
-//    LCD_command(0xC0); // move to next line
-//         analog_reading = (potent_dig * 3.3) / 4095;
-//        sprintf(reading_str, "%.6f", analog_reading);
-
-//        // Update only the necessary part of the display
-//        for (unsigned int i = 0; i < sizeof(reading_str) / sizeof(reading_str[0]); i++) {
-//            LCD_data(reading_str[i]);
-//        }
-//        LCD_data('V');
-
-//        delayMs(500); 
-//			}
-//		}
-
-
 		
-		
-               
-// Light sensor 
-
-
-//LCD_command(1); // clear display of LCD
-//LCD_data('L');
-//LCD_data('I');
-//LCD_data('G');
-//LCD_data('H');
-//LCD_data('T');
-//LCD_data(' ');
-//LCD_data('S');
-//LCD_data('E');
-//LCD_data('N');
-//LCD_data('S');
-//LCD_data('O');
-//LCD_data('R');
-//LCD_command(0xC0); // next line
-
-//analog_reading = (photosensor_dig * 3.3) / 4095;
-//sprintf(reading_str, "%.6f", analog_reading);
-
-//for (unsigned int i = 0; i < sizeof(reading_str) / sizeof(reading_str[0]); i++) {
-//    LCD_data(reading_str[i]);
-//}
-
-//LCD_data('V'); // This is where you correctly display 'V' for Volts
-//delayMs(500);
-//}
-//		}
-
-
-
